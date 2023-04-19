@@ -1,3 +1,5 @@
+# This is a basic workflow to help you get started with Actions
+
 name: Demo
 
 # Controls when the workflow will run
@@ -10,27 +12,21 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-  
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  Run-Test-Configuration:
-    strategy:
-      max-parallel: 1
-      matrix:
-        os: [windows-latest]
-    runs-on: ${{ matrix.os }}
-    name: Run Test Configuration
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will rrun on
+    runs-on: windows-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - run: echo "Trigger event.. ${{ github.event_name }}. Runner OS.. ${{ runner.os }}."
-      - name: Eggplant Runner
-        uses: keysight-eggplant/eggplant-github-action@v1.0.6
+      - name: "Eggplant Runner"
+        uses: keysight-eggplant/eggplant-github-action@v1.0.5
         with:
-          dryRun: true
-          ServerURL:  http://5cd151jqn2:8000
-          ClientID: "client:dai:api:integration:3b5db329-0792-4995-86e6-f06fb66687cf"
-          testConfigName: "TutorialSUT_Config_Script"
-          testConfigID: "382edf10-de99-4c2a-abd9-bf6ddcdef474" # Test configuration which need to perform execution
-          ClientSecret: "3gJzKlBXIAniIw8zJRrjujwPnSmIwqDf" # Eggplant DAI service client secret
-          eggplantRunnerPath: "C:\eggplant-runner-Windows-6.4.0-5.exe"
-          # Alternatively, DAI client secret can be set as repo secret
-          # by going to GitHub Settings > Secrets > Actions
-          # clientSecret: "${{secrets.DAI_CLIENT_SECRET}}"
+          DryRun: true
+          serverURL: "http://5cd151jqn2:8000/"
+          testconfigID: "382edf10-de99-4c2a-abd9-bf6ddcdef474"
+          ClientID: "3b5db329-0792-4995-86e6-f06fb66687cf"
+          Clientsecret: "3gJzKlBXIAniIw8zJRrjujwPnSmIwqDf"
