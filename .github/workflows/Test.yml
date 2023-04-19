@@ -19,7 +19,7 @@ jobs:
     steps:
       - run: echo "Trigger event.. ${{ github.event_name }}. Runner OS.. ${{ runner.os }}."
       - name: Eggplant Runner
-        uses: BlandineScott/Demo@main
+        uses: BlandineScott/Demo@v1.0.6
         with:
           DryRun: false
           serverURL: http://5cd151jqn2:8000
