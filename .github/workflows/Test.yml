@@ -1,24 +1,21 @@
-# This is a basic workflow to help you get started with Actions
+name: "YOUR WORK FLOW NAME"
 
-name: Demo
+# Configure which branch that will trigger Eggplant DAI GitHub Action
+# on:
+#  push:
+#    branches:
+#      - main 
+#  pull_request:
+#    branches:
+#      - main
 
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will rrun on
-    runs-on: windows-latest
+  Run-DAI-Test-Configuration:
+    strategy: # Optional configuration by using matrix strategy
+      max-parallel: 1 # To set the maximum number of jobs that can run simultaneously 
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest] # Operating support by Eggplant DAI GitHub Action
+    runs-on: ${{ matrix.os }} # Provide OS matrix
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -26,5 +23,6 @@ jobs:
         uses: keysight-eggplant/eggplant-github-action@v1.0.5
         with:
           serverURL: "https://eval.dai.eggplant.cloud/controller/runner"
-          testconfigID: "a53e535a-80f3-41e6-9797-8c8f2ba53f1e"
+          testConfigID: "a53e535a-80f3-41e6-9797-8c8f2ba53f1e"
           Clientsecret: "6GfNG3cFcXQIluNFSMAUDnkLUmUBa4mS"
+          testEnvironmentTimeout: 50
