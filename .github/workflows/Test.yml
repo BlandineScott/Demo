@@ -28,4 +28,4 @@ jobs:
           serverURL: "http://5cd151jqn2:8000/"
           testconfigID: "382edf10-de99-4c2a-abd9-bf6ddcdef474"
           ClientID: "${{ secrets.clientid }}"
-          Clientsecret: "${{ secrets.secret }}"
+          Clientsecret: "3gJzKlBXIAniIw8zJRrjujwPnSmIwqDf"
