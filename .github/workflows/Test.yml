@@ -22,8 +22,8 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: "Eggplant Runner"
-        uses: keysight-eggplant/eggplant-github-action@v1.0.5
+      - name: Eggplant Runner
+        uses: BlandineScott/Demo-github-action@v1.0.5
         with:
           DryRun: false
           serverURL: "http://5cd151jqn2:8000/"
