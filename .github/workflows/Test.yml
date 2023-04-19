@@ -16,7 +16,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     name: Run Test Configuration
     steps:
-      - run: echo "Trigger event.. ${{ github.event_name }}. Runner OS.. ${{ runner.os }}."
+      - run: |
+          echo "Trigger event.. ${{ github.event_name }}. Runner OS.. ${{ runner.os }}."
       - name: Eggplant Runner
         uses: keysight-eggplant/eggplant-github-action@main
         with:
